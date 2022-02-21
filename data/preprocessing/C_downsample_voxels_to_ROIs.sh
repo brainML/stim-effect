@@ -1,8 +1,7 @@
 #!/bin/bash
 
-atlas_file= ${atlas} # ex. for HCP "../data/shen_1mm_268_parcellation_downsampled_to_mni_1.6mm.nii.gz"
-participant_data=../../data/participant_data
-out_dir=${participant_data}/pre_processed_data
+atlas_file= ${atlas} # ex. for HCP "../shen_1mm_268_parcellation_downsampled_to_mni_1.6mm.nii.gz"
+out_dir=${participant_data}/pre_processed_data # participant_data is path to directory containing participant run data directories
 
 #######################################
 # The following lines are for the default data structure in the HCP data set. 
