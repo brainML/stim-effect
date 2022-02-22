@@ -1,6 +1,6 @@
 # Same Cause; Different Effects in the Brain
 
-This repository contains code for the paper [Same Cause; Different Effects in the Brain: TODO LINK](TODO)
+This repository contains code for the paper [Same Cause; Different Effects in the Brain](https://arxiv.org/pdf/2202.10376.pdf)
 
 In this work, we propose a new inference framework that enables researchers to ask if the properties of a complex naturalistic stimulus affects two brain zones (i.e. voxels, regions, sensor-timepoints) in a similar way. We use simulated data and two real naturalistic fMRI datasets to show that our framework enables us to make such inferences. 
 
