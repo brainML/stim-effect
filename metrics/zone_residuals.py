@@ -8,21 +8,6 @@ def corr(X,Y,axis=0):
     # computes the correlation of x1 with y1, x2 with y2, and so on
     return np.mean(zscore(X,axis=axis)*zscore(Y,axis=axis),axis=axis)
 
-# computes the pair-wise correlation of all variables in X with all variables in Y
-def crosscorr(X,Y,axis=0):
-    nvars_x = X.shape[-1]
-    nvars_y = Y.shape[-1]
-
-    num_samples = X.shape[0]
-
-    rep = np.float32(np.repeat(X,nvars_y,axis=1))
-    rep = np.reshape(rep, [-1, nvars_x, nvars_y])
-    rep2 = np.float32(np.repeat(Y,nvars_x,axis=1))
-    rep2 = np.reshape(rep2, [-1, nvars_y, nvars_x])
-    rep2 = np.swapaxes(rep2, 1, 2)
-    
-    return corr(rep, rep2)
-
 def get_subj_test_data(fname):
     return np.load(fname, allow_pickle=True)
 
@@ -40,15 +25,19 @@ def compute_residuals(subj_id1, zone_indices):
     return brain_residuals
 
 def compute_zone_residuals(subj_id1, all_subj_ids, zone_indices):
+    num_zones = len(zone_indices)
     zone_residuals = []
     residuals_subj1 = compute_residuals(subj_id1, zone_indices)
     for subj_id2 in all_subj_ids:
         if subj_id2 == subj_id1:
             continue
-            
         residuals_subj2 = compute_residuals(subj_id2, zone_indices)
-        zone_residuals.append(corr(residuals_subj1, residuals_subj2))
-    zone_residuals = np.sqrt(np.nanmean(np.vstack(zone_residuals),0))
+        
+        corr_across_subs = np.zeros([num_zones,num_zones])
+        for zone in range(num_zones):
+            corr_across_subs[:,zone] = corr(residuals_subj1[:,zone,:].T, residuals_subj2[:,zone,:].T)
+        zone_residuals.append(corr_across_subs)
+    zone_residuals = np.sqrt(np.nanmean(zone_residuals,0))
     return zone_residuals
 
 if __name__ == '__main__':
