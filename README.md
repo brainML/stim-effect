@@ -53,7 +53,7 @@ python metrics/zone_residuals.py
       --output OUTPUT_FNAME 
       --zone_indices ZONE_IND_FNAME
 ```
-The input `FILE_FORMAT` specifies the format of the participant file names, e.g. `/data_dir/participant_{}_data.npy`. The input file `ZONE_IND_FNAME` is a 1d numpy array that specifies the indices of all zones for which the zone residuals should be computed. The output is the pair-wise zone residuals between all pairs of brain zones specified by `--zone_indices`, which is a 2d numpy array with shape number of brain zones by number of brain zones.
+The input `FILE_FORMAT` specifies the format of the participant file names, e.g. `/data_dir/participant_{}_data.npy`. The input file `ZONE_IND_FNAME` is a 1d numpy array that specifies the indices of all zones for which the zone residuals should be computed. The output is a dictionary of the pair-wise zone residuals between all pairs of brain zones specified by `--zone_indices` for each participant. The pair-wise zone residuals are a 2d numpy array with shape number of brain zones by number of brain zones.
 
 Note that zone residuals are best estimated for datasets that contain at least 5 participants (see Appendix of the paper). 
 
