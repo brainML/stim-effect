@@ -31,7 +31,7 @@ if __name__ == '__main__':
     for i in ['A','B','C','D']:
         inferences[i] = []
             
-    num_zones = zone_residuals.shape[0]
+    num_zones = avrg_residuals.shape[0]
     for i in range(num_zones):
         for j in range(num_zones):
             if i == j:
