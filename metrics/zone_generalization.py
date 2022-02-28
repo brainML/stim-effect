@@ -32,9 +32,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
     
-    zone_indices = np.load(args.zone_indices)
-    predictions = np.load(args.predictions)[:,zone_indices]
-    test_data = np.load(args.data)[:,zone_indices]
+    zone_indices = np.load(args.zone_indices, allow_pickle=True)
+    predictions = np.load(args.predictions, allow_pickle=True)[:,zone_indices]
+    test_data = np.load(args.data, allow_pickle=True)[:,zone_indices]
 
     # compute the encoding model performance
     zone_generalizations = crosscorr(predictions, test_data)
