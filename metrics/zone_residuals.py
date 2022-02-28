@@ -48,7 +48,7 @@ def compute_zone_residuals(subj_id1, all_subj_ids, zone_indices):
             
         residuals_subj2 = compute_residuals(subj_id2, zone_indices)
         zone_residuals.append(corr(residuals_subj1, residuals_subj2))
-    zone_residuals = np.sqrt(np.mean(np.vstack(zone_residuals),0))
+    zone_residuals = np.sqrt(np.nanmean(np.vstack(zone_residuals),0))
     return zone_residuals
 
 if __name__ == '__main__':
