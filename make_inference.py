@@ -24,7 +24,7 @@ if __name__ == '__main__':
     avrg_generalization = np.nanmean(zone_generalization,0)
 
     # compute average zone residuals
-    zone_residuals = [np.array(np.load(sub_name, allow_pickle=True).item()['residuals'].values()) for sub_name in sub_residuals_fname_list]
+    zone_residuals = [list(np.load(sub_name, allow_pickle=True).item()['residuals'].values()) for sub_name in sub_residuals_fname_list]
     avrg_residuals = np.nanmean(zone_residuals,0)
 
     inferences = {}
