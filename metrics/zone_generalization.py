@@ -37,6 +37,6 @@ if __name__ == '__main__':
     test_data = np.load(args.data)[:,zone_indices]
 
     # compute the encoding model performance
-    zone_generalizations = crosscorr(predictions, test)
+    zone_generalizations = crosscorr(predictions, test_data)
     
     np.save(args.output, {'generalizations':zone_generalizations, 'zone indices':zone_indices})
