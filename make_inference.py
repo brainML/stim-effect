@@ -21,11 +21,11 @@ if __name__ == '__main__':
 
     # compute average zone generalization
     zone_generalization = [np.load(sub_name, allow_pickle=True).item()['generalizations'] for sub_name in sub_generalization_fname_list]
-    avrg_generalization = np.mean(zone_generalization)
+    avrg_generalization = np.nanmean(zone_generalization,0)
 
     # compute average zone residuals
-    zone_residuals = [np.load(sub_name, allow_pickle=True).item()['residuals'].values() for sub_name in sub_residuals_fname_list]
-    avrg_residuals = np.mean(zone_residuals)
+    zone_residuals = [np.array(np.load(sub_name, allow_pickle=True).item()['residuals'].values()) for sub_name in sub_residuals_fname_list]
+    avrg_residuals = np.nanmean(zone_residuals,0)
 
     inferences = {}
     for i in ['A','B','C','D']:
