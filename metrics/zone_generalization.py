@@ -32,8 +32,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
     
-    predictions = np.load(args.predictions, allow_pickle=True)[:,zone_indices]
-    test_data = np.load(args.data, allow_pickle=True)[:,zone_indices]
+    predictions = np.load(args.predictions, allow_pickle=True)
+    test_data = np.load(args.data, allow_pickle=True)
     
     if args.zone_indices:
         zone_indices = np.load(args.zone_indices, allow_pickle=True)
