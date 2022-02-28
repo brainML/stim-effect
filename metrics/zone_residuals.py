@@ -24,7 +24,7 @@ def crosscorr(X,Y,axis=0):
     return corr(rep, rep2)
 
 def get_subj_test_data(fname):
-    return np.load(fname)
+    return np.load(fname, allow_pickle=True)
 
 def compute_residuals(subj_id1, zone_indices):
     # computes the pairwise residuals of predicting each brain zones from every other brain zone
