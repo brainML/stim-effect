@@ -53,7 +53,7 @@ python metrics/zone_residuals.py
       --output OUTPUT_FNAME 
       --zone_indices ZONE_IND_FNAME
 ```
-The input `FILE_FORMAT` specifies the format of the participant file names, e.g. `\data_dir\participant_{}_data.npy`. The input file `ZONE_IND_FNAME` is a 1d numpy array that specifies the indices of all zones for which the zone residuals should be computed. The output is the pair-wise zone residuals between all pairs of brain zones specified by `--zone_indices`, which is a 2d numpy array with shape number of brain zones by number of brain zones.
+The input `FILE_FORMAT` specifies the format of the participant file names, e.g. `/data_dir/participant_{}_data.npy`. The input file `ZONE_IND_FNAME` is a 1d numpy array that specifies the indices of all zones for which the zone residuals should be computed. The output is the pair-wise zone residuals between all pairs of brain zones specified by `--zone_indices`, which is a 2d numpy array with shape number of brain zones by number of brain zones.
 
 Note that zone residuals are best estimated for datasets that contain at least 5 participants (see Appendix of the paper). 
 
@@ -68,5 +68,5 @@ python make_inference.py
       --residuals_threshold RES_THRESH 
       --output OUTPUT_FNAME
 ```
-The input `GENERALIZATIONS_FNAME_FORMAT` and `RESIDUALS_FNAME_FORMAT` specify the formats of the file names corresponding to the zone generalizations and zone residuals for all particpants, e.g. `\data_dir\participant_{}_zone_generalizations.npy`. Arguments `--generalization_threshold` and `--residuals_threshold` specify the thresholds for going down each branch of the inference framework illustrated above. These thresholds can be set empirically based on estimated significance. Alternatively, in this work we set these thresholds based on simulated data.
+The input `GENERALIZATIONS_FNAME_FORMAT` and `RESIDUALS_FNAME_FORMAT` specify the formats of the file names corresponding to the zone generalizations and zone residuals for all particpants, e.g. `/data_dir/participant_{}_zone_generalizations.npy`. Arguments `--generalization_threshold` and `--residuals_threshold` specify the thresholds for going down each branch of the inference framework illustrated above. These thresholds can be set empirically based on estimated significance. Alternatively, in this work we set these thresholds based on simulated data.
 The output is a dictionary with keys corresponding to each inference type (A-D) and values corresponding to 2d numpy arrays that specify the pairs of brain zone indices for which we make the corresponding inference. 
