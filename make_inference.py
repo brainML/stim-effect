@@ -20,11 +20,11 @@ if __name__ == '__main__':
     sub_residuals_fname_list = glob.glob(args.zone_residuals_format.format('*'))
 
     # compute average zone generalization
-    zone_generalization = [np.load(sub_name).item()['zone_generalization'] for sub_name in sub_generalization_fname_list]
+    zone_generalization = [np.load(sub_name, allow_pickle=True).item()['zone_generalization'] for sub_name in sub_generalization_fname_list]
     avrg_generalization = np.mean(zone_generalization)
 
     # compute average zone residuals
-    zone_residuals = [np.load(sub_name).item()['zone_residuals'] for sub_name in sub_residuals_fname_list]
+    zone_residuals = [np.load(sub_name, allow_pickle=True).item()['zone_residuals'] for sub_name in sub_residuals_fname_list]
     avrg_residuals = np.mean(zone_residuals)
 
     inferences = {}
