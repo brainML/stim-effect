@@ -43,7 +43,7 @@ def compute_zone_residuals(subj_id1, all_subj_ids, zone_indices):
     zone_residuals = []
     residuals_subj1 = compute_residuals(subj_id1, zone_indices)
     for subj_id2 in all_subj_ids:
-        if subj_ids2 == subj_id1:
+        if subj_id2 == subj_id1:
             continue
             
         residuals_subj2 = compute_residuals(subj_id2, zone_indices)
