@@ -6,8 +6,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--zone_generalization_format", required=True)
     parser.add_argument("--zone_residuals_format", required=True)
-    parser.add_argument("--generalization_threshold", required=True)
-    parser.add_argument("--residuals_threshold", required=True)
+    parser.add_argument("--generalization_threshold", required=True, type=float)
+    parser.add_argument("--residuals_threshold", required=True, type=float)
     parser.add_argument("--output", required=True)
     
     args = parser.parse_args()
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     # compute average zone residuals
     zone_residuals = [list(np.load(sub_name, allow_pickle=True).item()['residuals'].values()) for sub_name in sub_residuals_fname_list]
-    avrg_residuals = np.nanmean(zone_residuals,0)
+    avrg_residuals = np.nanmean(np.nanmean(zone_residuals,0),0)
 
     inferences = {}
     for i in ['A','B','C','D']:
