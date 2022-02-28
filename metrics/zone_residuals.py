@@ -66,6 +66,8 @@ if __name__ == '__main__':
     sub_fname_list = glob.glob(args.data_file_format.format('*'))
     
     # compute zone residuals
-    zone_residuals = compute_zone_residuals(sub_fname, sub_fname_list, zone_indices)
+    zone_residuals = {}
+    for sub_fname in sub_fname_list:
+        zone_residuals[sub_fname] = compute_zone_residuals(sub_fname, sub_fname_list, zone_indices))
     
-    np.save(args.output, {'residuals':zone_residuals, 'zone indices':zone_indices})
+    np.save(args.output, {'residuals':zone_residuals, zone indices':zone_indices})
