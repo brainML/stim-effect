@@ -31,7 +31,7 @@ def compute_residuals(subj_id1, zone_indices):
     # returns a tensor of dimensions num brain zones x num brain zones x num samples
     test_data = get_subj_test_data(subj_id1)[:,zone_indices]
     brain_corrs = 1-squareform(pdist(test_data.T, 'correlation'))
-    num_samples, len(zone_indices) = test_data.shape
+    num_samples, num_vars = test_data.shape
     brain_residuals = np.zeros([num_vars, num_vars, num_samples])
     
     for i in range(num_vars):
