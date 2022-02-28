@@ -27,14 +27,20 @@ if __name__ == '__main__':
     parser.add_argument("--predictions", required=True)
     parser.add_argument("--data", required=True)
     parser.add_argument("--output", required=True)
-    parser.add_argument("--zone_indices", required=True)
+    parser.add_argument("--zone_indices", default='')
     
     args = parser.parse_args()
     print(args)
     
-    zone_indices = np.load(args.zone_indices, allow_pickle=True)
     predictions = np.load(args.predictions, allow_pickle=True)[:,zone_indices]
     test_data = np.load(args.data, allow_pickle=True)[:,zone_indices]
+    
+    if args.zone_indices:
+        zone_indices = np.load(args.zone_indices, allow_pickle=True)
+        predictions = predictions[:,zone_indices]
+        test_data = test_data[:,zone_indices]
+    else:
+        zone_indices = np.arange(predictions.shape[1])
 
     # compute the encoding model performance
     zone_generalizations = crosscorr(predictions, test_data)
