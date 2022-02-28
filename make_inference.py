@@ -50,6 +50,7 @@ if __name__ == '__main__':
                     inferences['D'].append((i,j))
     
     for key in inferences.keys():
-        inferences[key] = np.vstack(inferences[key])
+        if len(inferences[key]) > 1:
+            inferences[key] = np.vstack(inferences[key])
     
     np.save(args.output, {'inferences':inferences, 'generalization threshold':thresh_gen, 'residuals threshold':thresh_res})
