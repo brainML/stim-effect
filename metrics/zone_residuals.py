@@ -68,6 +68,6 @@ if __name__ == '__main__':
     # compute zone residuals
     zone_residuals = {}
     for sub_fname in sub_fname_list:
-        zone_residuals[sub_fname] = compute_zone_residuals(sub_fname, sub_fname_list, zone_indices))
+        zone_residuals[sub_fname] = compute_zone_residuals(sub_fname, sub_fname_list, zone_indices)
     
     np.save(args.output, {'residuals':zone_residuals, zone indices':zone_indices})
