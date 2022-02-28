@@ -20,6 +20,6 @@ if __name__ == '__main__':
     test_data = np.load(args.data)
 
     # compute the encoding model performance
-    encoding_performance = corr(predictions, test)
+    encoding_performance = corr(predictions, test_data)
     
     np.save(args.output, encoding_performance)
