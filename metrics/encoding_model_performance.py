@@ -16,8 +16,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print(args)
 
-    predictions = np.load(args.predictions)
-    test_data = np.load(args.data)
+    predictions = np.load(args.predictions, allow_pickle=True)
+    test_data = np.load(args.data, allow_pickle=True)
 
     # compute the encoding model performance
     encoding_performance = corr(predictions, test_data)
