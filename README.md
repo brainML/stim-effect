@@ -23,7 +23,7 @@ We illustrate the proposed inference framework below that enables making one of 
 4. We use both zone generalization and zone residuals to make one of four inferences.
 
 <p align="center">
-  <img width="800" src="https://github.com/brainML/stim-effect/tree/main/figures/framework.png">
+  <img width="800" src="https://github.com/brainML/stim-effect/figures/framework.png">
 </p>
 
 ### Step 1: encoding model performance
